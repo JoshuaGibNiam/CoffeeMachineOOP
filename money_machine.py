@@ -36,18 +36,18 @@ class MoneyMachine:
 
     def make_payment(self, drink):
         """Check if balance is sufficient to buy drink"""
-        self.cardorcash = input("Would you like to pay with card or cash?: ")
-        while self.cardorcash != "card" and self.cardorcash != "cash":
-            self.cardorcash = input("Invalid input. PLease enter card or cash: ")
-        if self.cardorcash == "cash":
+        self.card_or_cash = input("Would you like to pay with card or cash?: ").lower()
+        while self.card_or_cash != "card" and self.cardorcash != "cash":
+            self.card_or_cash = input("Invalid input. PLease enter card or cash: ")
+        if self.card_or_cash == "cash":
             self.process_coins()
             if self.total_value == drink.cost:
                 self.profit += drink.cost
-                self.print_reciept(drink)
+                self.print_receipt(drink)
                 print("Payment successful.")
                 return True
             elif self.total_value > drink.cost:
-                self.print_reciept(drink)
+                self.print_receipt(drink)
                 print("Payment successful.")
                 print(f"Here is A${round(self.total_value - drink.cost, 2)} in change.")
                 self.profit += drink.cost
@@ -56,13 +56,13 @@ class MoneyMachine:
                 return False
         else:
             if self.process_card():
-                self.print_reciept(drink, int(self.cardnumber))
+                self.print_receipt(drink, int(self.cardnumber))
                 return True
             else:
                 return False
 
-    def print_reciept(self, order, cardnumber=0):
-        print("Reciept:")
+    def print_receipt(self, order, cardnumber=0):
+        print("Receipt:")
         print(f"\nOrder for {order.name} made at {dt.now()} \n"
               f"A${order.cost} paid fully.")
         if cardnumber != 0:
