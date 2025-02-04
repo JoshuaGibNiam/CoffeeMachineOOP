@@ -20,3 +20,10 @@ class CoffeeMaker:
         for items in drink.ingredient:
             self.resources[items] -= drink.ingredient[items]
         print(f"Here's your {drink.name}. Enjoy!")
+
+    def add_resource(self):
+        """Adds resources to coffee machine"""
+        for resource in self.resources:
+            self.resources[resource] += int(input(f"How much {resource} would you like to add?:"))
+        print("Successfully added resources!")
+        self.report()

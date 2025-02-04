@@ -3,7 +3,7 @@ from datetime import datetime as dt
 
 class MoneyMachine:
     CURRENCY = "A$"
-    COIN_VALUES = {"Andruaters": 1, "Andrimes": 0.25, "Andrickles": 0.05,
+    COIN_VALUES = {"Androllars": 1, "Andruaters": 0.25, "Andrickles": 0.05,
                    "Andrennies": 0.01}
 
     def __init__(self):
@@ -62,6 +62,7 @@ class MoneyMachine:
                 return False
 
     def print_reciept(self, order, cardnumber=0):
+        print("Reciept:")
         print(f"\nOrder for {order.name} made at {dt.now()} \n"
               f"A${order.cost} paid fully.")
         if cardnumber != 0:

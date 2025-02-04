@@ -1,6 +1,6 @@
-from Menu import Menu
-from MoneyProcessor import MoneyMachine
-from CoffeeMakerClass import CoffeeMaker
+from menu import Menu
+from money_machine import MoneyMachine
+from coffee_maker import CoffeeMaker
 
 def adminaccess():
     pwd = input("Enter admin password: ")
@@ -19,26 +19,27 @@ while True:
     print(menu.get_items())
     user_action = input("What would you like to order?: ").lower()
 
-    if user_action == "off":
-        break
-
-    elif user_action == "report":
+    if user_action == "report":
         coffeemachine.report()
         moneymachine.report()
 
     elif user_action == "admin":
         if adminaccess():
-            admin_order = input("What would you like to do?: ")
+            admin_order = input("What would you like to do?: ").lower()
             if admin_order == "add":
                 menu.add_item()
             elif admin_order == "remove":
                menu.remove_item()
+            elif admin_order == "add resources":
+                coffeemachine.add_resource()
+            elif admin_order == "off":
+                break
             else:
               continue
     else:
         order = menu.find_drink(user_action)
         if not order:
-            print("Sorry, order does not exist.")
+            print(f"Sorry, {order} does not exist.")
         else:
             if coffeemachine.resource_sufficient(order):
                 if moneymachine.make_payment(order):
