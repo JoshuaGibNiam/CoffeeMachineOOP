@@ -38,8 +38,8 @@ while True:
               continue
     else:
         order = menu.find_drink(user_action)
-        if not order:
-            print(f"Sorry, {order} does not exist.")
+        if order is None:
+            print(f"Sorry, {user_action} does not exist.")
         else:
             if coffeemachine.resource_sufficient(order):
                 if moneymachine.make_payment(order):

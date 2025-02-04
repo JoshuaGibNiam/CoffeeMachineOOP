@@ -33,7 +33,7 @@ class Menu:
         for item in self.menu:
             if item.name == order_name:
                 return item
-        return False
+        return None
 
     def add_item(self):
         self.addname = input("What would you like to name your coffee?: ")
