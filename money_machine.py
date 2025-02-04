@@ -37,7 +37,7 @@ class MoneyMachine:
     def make_payment(self, drink):
         """Check if balance is sufficient to buy drink"""
         self.card_or_cash = input("Would you like to pay with card or cash?: ").lower()
-        while self.card_or_cash != "card" and self.cardorcash != "cash":
+        while self.card_or_cash != "card" and self.card_or_cash != "cash":
             self.card_or_cash = input("Invalid input. PLease enter card or cash: ")
         if self.card_or_cash == "cash":
             self.process_coins()
